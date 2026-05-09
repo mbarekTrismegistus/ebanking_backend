@@ -23,17 +23,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-/**
- * Implementation of BankAccountService.
- *
- * Key points taught in the course:
- *  - @Transactional on each method so that lazy collections
- *    (account operations) can be accessed within the same session.
- *  - Entities are ONLY used inside this layer and below (repositories).
- *  - DTOs are returned to the web layer.
- *  - Mapper converts between the two worlds.
- *  - @Slf4j provides a logger (log.info / log.error).
- */
+
 @Service
 @Transactional
 @AllArgsConstructor
@@ -44,10 +34,6 @@ public class BankAccountServiceImpl implements BankAccountService {
     private final BankAccountRepository    bankAccountRepository;
     private final AccountOperationRepository accountOperationRepository;
     private final BankAccountMapperImpl    dtoMapper;
-
-    // ------------------------------------------------------------------ //
-    //  Customer
-    // ------------------------------------------------------------------ //
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {

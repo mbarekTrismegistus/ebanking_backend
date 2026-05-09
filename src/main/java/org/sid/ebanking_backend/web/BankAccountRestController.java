@@ -1,10 +1,10 @@
-package com.enset.digitalbanking.web;
+package org.sid.ebanking_backend.web;
 
-import com.enset.digitalbanking.dtos.*;
-import com.enset.digitalbanking.exceptions.BalanceNotSufficientException;
-import com.enset.digitalbanking.exceptions.BankAccountNotFoundException;
-import com.enset.digitalbanking.exceptions.CustomerNotFoundException;
-import com.enset.digitalbanking.services.BankAccountService;
+import org.sid.ebanking_backend.dtos.*;
+import org.sid.ebanking_backend.exceptions.BalanceNotSufficientException;
+import org.sid.ebanking_backend.exceptions.BankAccountNotFoundException;
+import org.sid.ebanking_backend.exceptions.CustomerNotFoundException;
+import org.sid.ebanking_backend.services.BankAccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
