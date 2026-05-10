@@ -20,17 +20,20 @@ public class CustomerRestController {
 
     private final BankAccountService bankAccountService;
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/customers")
     public List<CustomerDTO> customers() {
         return bankAccountService.listCustomers();
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/customers/search")
     public List<CustomerDTO> searchCustomers(
             @RequestParam(name = "keyword", defaultValue = "") String keyword) {
         return bankAccountService.searchCustomers("%" + keyword + "%");
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/customers/{id}")
     public CustomerDTO getCustomer(@PathVariable Long id) {
         try {
@@ -40,11 +43,13 @@ public class CustomerRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/customers")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
         return bankAccountService.saveCustomer(customerDTO);
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PutMapping("/customers/{customerId}")
     public CustomerDTO updateCustomer(
             @PathVariable Long customerId,
@@ -53,6 +58,7 @@ public class CustomerRestController {
         return bankAccountService.updateCustomer(customerDTO);
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @DeleteMapping("/customers/{id}")
     public void deleteCustomer(@PathVariable Long id) {
         bankAccountService.deleteCustomer(id);

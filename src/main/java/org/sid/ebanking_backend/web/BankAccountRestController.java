@@ -22,6 +22,7 @@ public class BankAccountRestController {
 
     private final BankAccountService bankAccountService;
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/accounts/{accountId}")
     public BankAccountDTO getBankAccount(@PathVariable String accountId) {
         try {
@@ -31,12 +32,14 @@ public class BankAccountRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/accounts")
     public List<BankAccountDTO> listAccounts() {
         return bankAccountService.bankAccountList();
     }
 
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/accounts/current")
     public CurrentBankAccountDTO saveCurrentAccount(
             @RequestParam double initialBalance,
@@ -49,6 +52,7 @@ public class BankAccountRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/accounts/saving")
     public SavingBankAccountDTO saveSavingAccount(
             @RequestParam double initialBalance,
@@ -61,12 +65,14 @@ public class BankAccountRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/accounts/{accountId}/operations")
     public List<AccountOperationDTO> getHistory(@PathVariable String accountId) {
         return bankAccountService.accountHistory(accountId);
     }
 
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @GetMapping("/accounts/{accountId}/pageOperations")
     public AccountHistoryDTO getAccountHistory(
             @PathVariable String accountId,
@@ -80,6 +86,7 @@ public class BankAccountRestController {
     }
 
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/accounts/debit")
     public DebitDTO debit(@RequestBody DebitDTO debitDTO) {
         try {
@@ -93,6 +100,7 @@ public class BankAccountRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/accounts/credit")
     public CreditDTO credit(@RequestBody CreditDTO creditDTO) {
         try {
@@ -106,6 +114,7 @@ public class BankAccountRestController {
         }
     }
 
+    @PreAuthorize("hasAuthority('SCOPE_USER')")
     @PostMapping("/accounts/transfer")
     public void transfer(@RequestBody TransferRequestDTO transferRequestDTO) {
         try {
